@@ -1,39 +1,24 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import ColorChip from "./color-chip";
 import PlusButton from "./plus-button";
-import { generateHexCode } from "@/lib/utils/generateHexCode";
 
-export default function ColorPalette() {
-  const [colors, setColors] = useState<string[]>([]);
-  const prevColorsRef = useRef<string[]>(colors);
-  const colorsLength = colors.length;
+type ColorPaletteProps = {
+  colors: string[];
+  colorsLength: number;
+  isNewChip: (color: string) => boolean;
+  addColorChip: () => void;
+  removeColorChip: (indexToRemove: number) => void;
+};
 
-  useEffect(() => {
-    if (colors.length === 0) {
-      setColors(Array.from({ length: 3 }, () => generateHexCode()));
-    }
-  }, []);
-
-  function addColorChip() {
-    if (colorsLength >= 5) return;
-    setColors([...colors, generateHexCode()]);
-  }
-
-  function removeColorChip(indexToRemove: number) {
-    if (colorsLength > 3) {
-      setColors(colors.filter((_, index) => index !== indexToRemove));
-    }
-  }
-
-  const isNewChip = (color: string) => !prevColorsRef.current.includes(color);
-
-  useEffect(() => {
-    prevColorsRef.current = colors;
-  }, [colors]);
-
+export default function ColorPalette({
+  colors,
+  colorsLength,
+  isNewChip,
+  addColorChip,
+  removeColorChip,
+}: ColorPaletteProps) {
   return (
     <div className="flex space-x-8">
       <AnimatePresence>
