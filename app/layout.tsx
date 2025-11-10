@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Footer from "@/components/footer";
+import Header from "@/components/header";
 
 export const metadata: Metadata = {
   title: "Color Palette Creator",
@@ -23,6 +24,7 @@ export default function RootLayout({
       <body
         className={`${momoTrustDisplay.className} flex flex-col min-h-screen p-10 antialiased`}
       >
+        <Header />
         {children}
         <Footer />
       </body>
