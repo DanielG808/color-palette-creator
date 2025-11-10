@@ -2,7 +2,7 @@ import PageTitleLink from "@/components/page-title-link";
 
 export default function Home() {
   return (
-    <main className="flex flex-col justify-center items-center">
+    <main className="flex-1 flex flex-col items-center">
       <PageTitleLink />
     </main>
   );
