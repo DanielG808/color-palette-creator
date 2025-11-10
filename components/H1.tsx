@@ -1,6 +1,19 @@
-export default function Home({ children }: { children: React.ReactNode }) {
+import { cn } from "@/lib/utils/cn";
+
+export default function Home({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   return (
-    <h1 className="text-5xl font-bold hover:text-black duration-200">
+    <h1
+      className={cn(
+        "text-5xl font-bold hover:text-black duration-200 cursor-pointer",
+        className
+      )}
+    >
       {children}
     </h1>
   );

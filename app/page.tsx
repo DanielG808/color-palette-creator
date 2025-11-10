@@ -1,9 +1,9 @@
-import H1 from "../components/H1";
+import PageTitleLink from "@/components/page-title-link";
 
 export default function Home() {
   return (
     <main className="flex flex-col justify-center items-center">
-      <H1>Color Palette Creator</H1>
+      <PageTitleLink />
     </main>
   );
 }
