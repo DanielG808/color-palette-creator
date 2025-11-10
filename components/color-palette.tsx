@@ -30,7 +30,7 @@ export default function ColorPalette() {
           exit={{ opacity: 0, scale: 0.5 }}
           transition={{ duration: 0.2 }}
         >
-          <ColorChip />
+          <ColorChip numColors={numColors} />
         </motion.div>
       ))}
       {numColors < 5 && <PlusButton onClick={addColorChip} />}
