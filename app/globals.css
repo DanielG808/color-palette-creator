@@ -15,11 +15,11 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
-  --color1: var(--calm-1);
-  --color2: var(--calm-2);
-  --color3: var(--calm-3);
-  --color4: var(--calm-4);
-  --color5: var(--calm-5);
+  --color-calm-1: var(--calm-1);
+  --color-calm-2: var(--calm-2);
+  --color-calm-3: var(--calm-3);
+  --color-calm-4: var(--calm-4);
+  --color-calm-5: var(--calm-5);
 }
 
 /* @media (prefers-color-scheme: dark) {
