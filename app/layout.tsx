@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${momoTrustDisplay.className} flex flex-col min-h-screen p-10 antialiased`}
+        className={`${momoTrustDisplay.className} flex flex-col items-center min-h-screen p-10 antialiased`}
       >
         <Header />
         {children}

@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="mx-auto text-xs">
+    <footer className="mt-auto text-xs">
       &copy;{new Date().getFullYear()} Color Palette Creator. All rights
       reserved.
     </footer>
