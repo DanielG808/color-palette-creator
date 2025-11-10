@@ -19,7 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${momoTrustDisplay.className} antialiased`}>
+      <body
+        className={`${momoTrustDisplay.className} min-h-screen antialiased`}
+      >
         {children}
       </body>
     </html>
