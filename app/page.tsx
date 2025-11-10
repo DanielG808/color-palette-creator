@@ -1,8 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { generateHexCode } from "./lib/generateHexCode";
 
 export default function Home() {
+  const color = generateHexCode();
+  console.log(color);
+
   return (
     <main className="flex flex-col justify-center items-center">
       <motion.h1
