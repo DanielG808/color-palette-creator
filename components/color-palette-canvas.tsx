@@ -8,35 +8,44 @@ import RandomizeColorsButton from "./randomize-colors-button";
 
 export default function ColorPaletteCanvas() {
   const [colors, setColors] = useState<string[]>([]);
-  const prevColorsRef = useRef<string[]>(colors);
+  const initializedRef = useRef(false);
+  const prevColorsRef = useRef<string[]>([]);
   const colorsLength = colors.length;
 
-  function initializeColors(numColors: number) {
-    if (colors.length === 0) {
-      setColors(Array.from({ length: numColors }, () => generateHexCode()));
-    }
-  }
-
+  // Guarded init -> avoids double init in Strict Mode
   useEffect(() => {
-    initializeColors(3);
+    if (initializedRef.current) return;
+    initializedRef.current = true;
+    setColors(Array.from({ length: 3 }, () => generateHexCode()));
   }, []);
 
-  function addColorChip() {
-    if (colorsLength >= 5) return;
-    setColors([...colors, generateHexCode()]);
-  }
-
-  function removeColorChip(indexToRemove: number) {
-    if (colorsLength > 3) {
-      setColors(colors.filter((_, index) => index !== indexToRemove));
-    }
-  }
-
-  const isNewChip = (color: string) => !prevColorsRef.current.includes(color);
-
+  // keep prevColorsRef for "isNew" comparison by index
   useEffect(() => {
     prevColorsRef.current = colors;
   }, [colors]);
+
+  function addColorChip() {
+    setColors((prev) => {
+      if (prev.length >= 5) return prev;
+      return [...prev, generateHexCode()];
+    });
+  }
+
+  function removeColorChip(indexToRemove: number) {
+    setColors((prev) => {
+      if (prev.length <= 3) return prev;
+      return prev.filter((_, index) => index !== indexToRemove);
+    });
+  }
+
+  function randomizeColors() {
+    // single functional update that preserves array length & indices
+    setColors((prev) => prev.map(() => generateHexCode()));
+  }
+
+  // isNewChip -> compare by index (safer when keys are indices)
+  const isNewChip = (index: number, color: string) =>
+    prevColorsRef.current[index] !== color;
 
   return (
     <section className="flex flex-col justify-center border border-calm-3/75 px-10 py-4 rounded-md">
@@ -48,7 +57,7 @@ export default function ColorPaletteCanvas() {
         addColorChip={addColorChip}
         removeColorChip={removeColorChip}
       />
-      <RandomizeColorsButton />
+      <RandomizeColorsButton onClick={randomizeColors} />
     </section>
   );
 }
