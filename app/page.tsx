@@ -1,9 +1,10 @@
 import ColorPaletteCanvas from "@/components/color-palette-canvas";
+import PageContentContainer from "@/components/page-content-container";
 
 export default function Home() {
   return (
-    <main className="flex-1 flex flex-col items-center w-full">
+    <PageContentContainer>
       <ColorPaletteCanvas />
-    </main>
+    </PageContentContainer>
   );
 }
