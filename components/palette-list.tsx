@@ -7,9 +7,13 @@ type PaletteListProps = {
 
 export default function PaletteList({ palettes }: PaletteListProps) {
   return (
-    <ul>
-      {palettes.map((palette) => (
-        <PaletteChip key={palette.id} palette={palette} />
+    <ul className="space-y-1">
+      {palettes.map((palette, index) => (
+        <PaletteChip
+          key={palette.id}
+          palette={palette}
+          className={index % 2 === 0 ? "bg-calm-2/65" : ""}
+        />
       ))}
     </ul>
   );

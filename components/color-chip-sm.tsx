@@ -5,5 +5,10 @@ type ColorChipSmProps = {
 };
 
 export default function ColorChipSm({ color }: ColorChipSmProps) {
-  return <li>{color.hexCode}</li>;
+  return (
+    <li
+      className="h-7 w-7 rounded-full"
+      style={{ backgroundColor: color.hexCode }}
+    />
+  );
 }
