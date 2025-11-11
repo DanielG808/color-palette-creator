@@ -83,7 +83,12 @@ export default function useColorPaletteCanvas() {
     try {
       const storedPalettes = localStorage.getItem("palettes");
       const palettes = storedPalettes ? JSON.parse(storedPalettes) : [];
-      palettes.push(colors);
+
+      const newPalette = {
+        id: crypto.randomUUID(),
+        colors,
+      };
+      palettes.push(newPalette);
 
       localStorage.setItem("palettes", JSON.stringify(palettes));
       toast.success("New palette saved!");
