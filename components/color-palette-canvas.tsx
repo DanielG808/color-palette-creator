@@ -12,14 +12,12 @@ export default function ColorPaletteCanvas() {
   const prevColorsRef = useRef<string[]>([]);
   const colorsLength = colors.length;
 
-  // Guarded init -> avoids double init in Strict Mode
   useEffect(() => {
     if (initializedRef.current) return;
     initializedRef.current = true;
     setColors(Array.from({ length: 3 }, () => generateHexCode()));
   }, []);
 
-  // keep prevColorsRef for "isNew" comparison by index
   useEffect(() => {
     prevColorsRef.current = colors;
   }, [colors]);
@@ -39,16 +37,14 @@ export default function ColorPaletteCanvas() {
   }
 
   function randomizeColors() {
-    // single functional update that preserves array length & indices
     setColors((prev) => prev.map(() => generateHexCode()));
   }
 
-  // isNewChip -> compare by index (safer when keys are indices)
   const isNewChip = (index: number, color: string) =>
     prevColorsRef.current[index] !== color;
 
   return (
-    <section className="flex flex-col justify-center border border-calm-3/75 px-10 py-4 rounded-md">
+    <section className="flex flex-col justify-center border border-calm-3/75 px-10 py-5 rounded-md">
       <H1 className="text-xl mb-10">Create your palette:</H1>
       <ColorPalette
         colors={colors}
