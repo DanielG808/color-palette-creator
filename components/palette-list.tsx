@@ -1,11 +1,16 @@
 import { TPalette } from "@/lib/types/palette";
+import PaletteChip from "./palette-chip";
 
 type PaletteListProps = {
   palettes: TPalette[];
 };
 
 export default function PaletteList({ palettes }: PaletteListProps) {
-  console.log("Palettes:", palettes);
-
-  return <div>PaletteList</div>;
+  return (
+    <ul>
+      {palettes.map((palette) => (
+        <PaletteChip key={palette.id} palette={palette} />
+      ))}
+    </ul>
+  );
 }
