@@ -1,6 +1,5 @@
 import { TPalette } from "@/lib/types/palette";
 import ColorChipSm from "./color-chip-sm";
-import { cn } from "@/lib/utils/cn";
 
 type PaletteChipProps = {
   palette: TPalette;

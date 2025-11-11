@@ -13,7 +13,7 @@ export default function PaletteChip({ index, palette }: PaletteChipProps) {
       key={palette.id}
       className={`${
         index % 2 === 0 ? "bg-calm-2/65" : ""
-      } flex justify-between items-center w-full py-1 px-1 rounded-md hover:bg-calm-3/75 cursor-pointer duration-200`}
+      }  group flex justify-between items-center w-full py-1 px-1 rounded-md hover:bg-calm-3/75 cursor-pointer duration-200`}
     >
       <PaletteColors palette={palette} />
       <DeletePaletteButton />
