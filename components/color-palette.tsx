@@ -42,9 +42,10 @@ export default function ColorPalette({
             {color.locked ? (
               <LockIcon className="text-calm-5 hover:text-black" />
             ) : (
-              <LockOpenIcon className="text-calm-4 hover:text-black " />
+              <LockOpenIcon className="text-calm-4/75 hover:text-black" />
             )}
           </button>
+
           <ColorChip
             color={color}
             colorsLength={colorsLength}

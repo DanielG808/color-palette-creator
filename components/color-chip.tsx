@@ -17,17 +17,6 @@ export default function ColorChip({
   onRemove,
   copyHexCode,
 }: ColorChipProps) {
-  // async function copyHexCode() {
-  //   const hexCode = color.hexCode;
-  //   try {
-  //     await navigator.clipboard.writeText(hexCode);
-  //     toast.success(`Copied ${hexCode} to the clipboard!`);
-  //   } catch (error) {
-  //     console.error("Failed to copy:", error);
-  //     toast.error("Failed to copy to the clipboard.");
-  //   }
-  // }
-
   return (
     <div className="group relative inline-block">
       {colorsLength > 3 && (
