@@ -16,6 +16,7 @@ export default function ColorPaletteCanvas() {
     addColorChip,
     removeColorChip,
     toggleLock,
+    copyHexCode,
     isAllLocked,
     randomizeColors,
   } = useColorPaletteCanvas();
@@ -32,6 +33,7 @@ export default function ColorPaletteCanvas() {
         addColorChip={addColorChip}
         removeColorChip={removeColorChip}
         toggleLock={toggleLock}
+        copyHexCode={copyHexCode}
       />
       <RandomizeColorsButton allLocked={allLocked} onClick={randomizeColors} />
     </section>

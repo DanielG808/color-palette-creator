@@ -13,6 +13,7 @@ type ColorPaletteProps = {
   addColorChip: () => void;
   removeColorChip: (indexToRemove: number) => void;
   toggleLock: (index: number) => void;
+  copyHexCode: (hexCode: string) => Promise<void>;
 };
 
 export default function ColorPalette({
@@ -22,6 +23,7 @@ export default function ColorPalette({
   addColorChip,
   removeColorChip,
   toggleLock,
+  copyHexCode,
 }: ColorPaletteProps) {
   return (
     <div className="flex space-x-8">
@@ -40,13 +42,15 @@ export default function ColorPalette({
             {color.locked ? (
               <LockIcon className="text-calm-5 hover:text-black" />
             ) : (
-              <LockOpenIcon className="text-calm-4 hover:text-black " />
+              <LockOpenIcon className="text-calm-4/75 hover:text-black" />
             )}
           </button>
+
           <ColorChip
             color={color}
             colorsLength={colorsLength}
             onRemove={() => removeColorChip(index)}
+            copyHexCode={copyHexCode}
           />
         </motion.div>
       ))}

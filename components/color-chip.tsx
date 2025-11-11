@@ -1,16 +1,21 @@
+"use client";
+
 import { TColorChip } from "@/lib/types/colorChip";
 import { XIcon } from "lucide-react";
+import { toast } from "sonner";
 
 type ColorChipProps = {
   color: TColorChip;
   colorsLength: number;
   onRemove: () => void;
+  copyHexCode: (hexCode: string) => Promise<void>;
 };
 
 export default function ColorChip({
   color,
   colorsLength,
   onRemove,
+  copyHexCode,
 }: ColorChipProps) {
   return (
     <div className="group relative inline-block">
@@ -23,12 +28,15 @@ export default function ColorChip({
         </button>
       )}
 
-      <div className="flex justify-center items-center border border-calm-4/75 rounded-full w-24 h-24 shadow-lg hover:shadow-2xl duration-200">
+      <button
+        onClick={() => copyHexCode(color.hexCode)}
+        className="flex justify-center items-center border border-calm-4/75 rounded-full w-24 h-24 shadow-lg hover:shadow-2xl cursor-pointer duration-200"
+      >
         <div
           className="rounded-full w-20 h-20"
           style={{ backgroundColor: color.hexCode }}
         />
-      </div>
+      </button>
     </div>
   );
 }
