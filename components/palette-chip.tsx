@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils/cn";
 
 type PaletteChipProps = {
   palette: TPalette;
-  className: string;
+  className?: string;
 };
 
 export default function PaletteChip({ palette, className }: PaletteChipProps) {
