@@ -1,26 +1,22 @@
 import { TPalette } from "@/lib/types/palette";
-import ColorChipSm from "./color-chip-sm";
-import { cn } from "@/lib/utils/cn";
+import PaletteColors from "./palette-colors";
+import DeletePaletteButton from "./delete-palette-button";
 
 type PaletteChipProps = {
+  index: number;
   palette: TPalette;
-  className?: string;
 };
 
-export default function PaletteChip({ palette, className }: PaletteChipProps) {
-  const { id, colors } = palette;
+export default function PaletteChip({ index, palette }: PaletteChipProps) {
   return (
-    <li
-      className={cn(
-        "py-1 px-1 rounded-md hover:bg-calm-3/75 cursor-pointer duration-200",
-        className
-      )}
+    <div
+      key={palette.id}
+      className={`${
+        index % 2 === 0 ? "bg-calm-2/65" : ""
+      } flex justify-between items-center w-full py-1 px-1 rounded-md hover:bg-calm-3/75 cursor-pointer duration-200`}
     >
-      <ul className="flex space-x-1">
-        {colors.map((color) => (
-          <ColorChipSm key={color.hexCode} color={color} />
-        ))}
-      </ul>
-    </li>
+      <PaletteColors palette={palette} />
+      <DeletePaletteButton />
+    </div>
   );
 }
