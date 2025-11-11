@@ -1,5 +1,3 @@
-"use client";
-
 // components
 import SavedPalettesContainer from "./saved-palettes-container";
 import ColorPaletteCanvas from "./color-palette-canvas";

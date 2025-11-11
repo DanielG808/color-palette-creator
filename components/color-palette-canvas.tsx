@@ -1,3 +1,5 @@
+"use client";
+
 // components
 import H1 from "./H1";
 import ColorPalette from "./color-palette";
