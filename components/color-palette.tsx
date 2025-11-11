@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import ColorChip from "./color-chip";
 import PlusButton from "./plus-button";
-import { LockIcon, LockOpen, LockOpenIcon } from "lucide-react";
+import { LockOpenIcon } from "lucide-react";
 
 type ColorPaletteProps = {
   colors: string[];
@@ -41,7 +41,12 @@ export default function ColorPalette({
         </motion.div>
       ))}
 
-      {colors.length < 5 && <PlusButton onClick={addColorChip} />}
+      {colors.length < 5 && (
+        <div className="flex flex-col items-center space-y-5">
+          <div className="h-6" />
+          <PlusButton onClick={addColorChip} />
+        </div>
+      )}
     </div>
   );
 }
