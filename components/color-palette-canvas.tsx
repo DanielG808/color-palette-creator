@@ -7,6 +7,7 @@ import RandomizeColorsButton from "./randomize-colors-button";
 
 // hooks
 import useColorPaletteCanvas from "@/lib/hooks/useColorPaletteCanvas";
+import SavePaletteButton from "./save-palette-button";
 
 export default function ColorPaletteCanvas() {
   const {
@@ -36,6 +37,7 @@ export default function ColorPaletteCanvas() {
         copyHexCode={copyHexCode}
       />
       <RandomizeColorsButton allLocked={allLocked} onClick={randomizeColors} />
+      <SavePaletteButton />
     </section>
   );
 }
