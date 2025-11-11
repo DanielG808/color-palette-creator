@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { TColorChip } from "../types/colorChip";
 import { generateHexCode } from "../utils/generateHexCode";
+import { toast } from "sonner";
 
 export default function useColorPaletteCanvas() {
   // state
@@ -54,6 +55,16 @@ export default function useColorPaletteCanvas() {
     );
   }
 
+  async function copyHexCode(hexCode: string) {
+    try {
+      await navigator.clipboard.writeText(hexCode);
+      toast.success(`Copied ${hexCode} to the clipboard!`);
+    } catch (error) {
+      console.error("Failed to copy:", error);
+      toast.error("Failed to copy to the clipboard.");
+    }
+  }
+
   function isAllLocked(): boolean {
     return colors.every((chip) => chip.locked);
   }
@@ -75,6 +86,7 @@ export default function useColorPaletteCanvas() {
     addColorChip,
     removeColorChip,
     toggleLock,
+    copyHexCode,
     isAllLocked,
     randomizeColors,
   };

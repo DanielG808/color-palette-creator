@@ -13,6 +13,7 @@ type ColorPaletteProps = {
   addColorChip: () => void;
   removeColorChip: (indexToRemove: number) => void;
   toggleLock: (index: number) => void;
+  copyHexCode: (hexCode: string) => Promise<void>;
 };
 
 export default function ColorPalette({
@@ -22,6 +23,7 @@ export default function ColorPalette({
   addColorChip,
   removeColorChip,
   toggleLock,
+  copyHexCode,
 }: ColorPaletteProps) {
   return (
     <div className="flex space-x-8">
@@ -47,6 +49,7 @@ export default function ColorPalette({
             color={color}
             colorsLength={colorsLength}
             onRemove={() => removeColorChip(index)}
+            copyHexCode={copyHexCode}
           />
         </motion.div>
       ))}
