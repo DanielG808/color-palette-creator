@@ -1,7 +1,8 @@
+import { TColorChip } from "@/lib/types/colorChip";
 import { XIcon } from "lucide-react";
 
 type ColorChipProps = {
-  color: string;
+  color: TColorChip;
   colorsLength: number;
   onRemove: () => void;
 };
@@ -25,7 +26,7 @@ export default function ColorChip({
       <div className="flex justify-center items-center border border-calm-4/75 rounded-full w-24 h-24 shadow-lg hover:shadow-2xl duration-200">
         <div
           className="rounded-full w-20 h-20"
-          style={{ backgroundColor: color }}
+          style={{ backgroundColor: color.hexCode }}
         />
       </div>
     </div>

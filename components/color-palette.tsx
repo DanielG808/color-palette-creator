@@ -3,14 +3,16 @@
 import { motion } from "framer-motion";
 import ColorChip from "./color-chip";
 import PlusButton from "./plus-button";
-import { LockOpenIcon } from "lucide-react";
+import { LockIcon, LockOpenIcon } from "lucide-react";
+import { TColorChip } from "@/lib/types/colorChip";
 
 type ColorPaletteProps = {
-  colors: string[];
+  colors: TColorChip[];
   colorsLength: number;
-  isNewChip: (index: number, color: string) => boolean;
+  isNewChip: (index: number, color: TColorChip) => boolean;
   addColorChip: () => void;
   removeColorChip: (indexToRemove: number) => void;
+  toggleLock: (index: number) => void;
 };
 
 export default function ColorPalette({
@@ -19,6 +21,7 @@ export default function ColorPalette({
   isNewChip,
   addColorChip,
   removeColorChip,
+  toggleLock,
 }: ColorPaletteProps) {
   return (
     <div className="flex space-x-8">
@@ -30,8 +33,15 @@ export default function ColorPalette({
           transition={{ duration: 0.18 }}
           className="flex flex-col items-center space-y-5"
         >
-          <button className="text-calm-4 hover:text-black duration-200 cursor-pointer">
-            <LockOpenIcon />
+          <button
+            onClick={() => toggleLock(index)}
+            className="duration-200 cursor-pointer"
+          >
+            {color.locked ? (
+              <LockIcon className="text-calm-5 hover:text-black" />
+            ) : (
+              <LockOpenIcon className="text-calm-4 hover:text-black " />
+            )}
           </button>
           <ColorChip
             color={color}
