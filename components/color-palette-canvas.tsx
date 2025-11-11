@@ -1,13 +1,11 @@
-"use client";
-
 // components
-import H1 from "@/components/H1";
+import H1 from "./H1";
 import ColorPalette from "./color-palette";
 import RandomizeColorsButton from "./randomize-colors-button";
+import SavePaletteButton from "./save-palette-button";
 
 // hooks
 import useColorPaletteCanvas from "@/lib/hooks/useColorPaletteCanvas";
-import SavePaletteButton from "./save-palette-button";
 
 export default function ColorPaletteCanvas() {
   const {
@@ -24,9 +22,8 @@ export default function ColorPaletteCanvas() {
   } = useColorPaletteCanvas();
 
   const allLocked = isAllLocked();
-
   return (
-    <section className="flex flex-col justify-center border border-calm-3/75 px-10 py-5 rounded-md">
+    <section className="flex-1 flex flex-col border border-calm-3/75 px-10 py-5 rounded-md">
       <H1 className="text-xl mb-10">Create your palette:</H1>
       <ColorPalette
         colors={colors}
