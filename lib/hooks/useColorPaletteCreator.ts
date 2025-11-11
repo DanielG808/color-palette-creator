@@ -125,7 +125,15 @@ export default function useColorPaletteCreator() {
   }
 
   function deletePalette(id: string) {
-    console.log(`Palette ${id} has been deleted!`);
+    try {
+      const newPalettes = palettes.filter((palette) => palette.id !== id);
+      localStorage.setItem("palettes", JSON.stringify(newPalettes));
+      setPalettes(newPalettes);
+      toast.success("Palette successfully deleted.");
+    } catch (error) {
+      console.warn("Failed to remove palette to localStorage:", error);
+      toast.warning("Failed to delete palette. Please try again.");
+    }
   }
 
   return {
