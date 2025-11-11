@@ -79,6 +79,20 @@ export default function useColorPaletteCanvas() {
     );
   }
 
+  function savePalette() {
+    try {
+      const storedPalettes = localStorage.getItem("palettes");
+      const palettes = storedPalettes ? JSON.parse(storedPalettes) : [];
+      palettes.push(colors);
+
+      localStorage.setItem("palettes", JSON.stringify(palettes));
+      toast.success("New palette saved!");
+    } catch (error) {
+      console.warn("Failed to add palette to localStorage:", error);
+      toast.warning("Failed to save palette. Please try again.");
+    }
+  }
+
   return {
     colors,
     colorsLength,
@@ -89,5 +103,6 @@ export default function useColorPaletteCanvas() {
     copyHexCode,
     isAllLocked,
     randomizeColors,
+    savePalette,
   };
 }

@@ -20,6 +20,7 @@ export default function ColorPaletteCanvas() {
     copyHexCode,
     isAllLocked,
     randomizeColors,
+    savePalette,
   } = useColorPaletteCanvas();
 
   const allLocked = isAllLocked();
@@ -37,7 +38,7 @@ export default function ColorPaletteCanvas() {
         copyHexCode={copyHexCode}
       />
       <RandomizeColorsButton allLocked={allLocked} onClick={randomizeColors} />
-      <SavePaletteButton />
+      <SavePaletteButton savePalette={savePalette} />
     </section>
   );
 }
