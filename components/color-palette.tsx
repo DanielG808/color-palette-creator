@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import ColorChip from "./color-chip";
 import PlusButton from "./plus-button";
-import { LockIcon, LockOpenIcon } from "lucide-react";
 import { TColorChip } from "@/lib/types/colorChip";
 import ColorLockButton from "./color-lock-button";
 
@@ -41,16 +40,6 @@ export default function ColorPalette({
             locked={color.locked}
             toggleLock={toggleLock}
           />
-          <button
-            onClick={() => toggleLock(index)}
-            className="duration-200 cursor-pointer"
-          >
-            {color.locked ? (
-              <LockIcon className="text-calm-5 hover:text-black" />
-            ) : (
-              <LockOpenIcon className="text-calm-4/75 hover:text-black" />
-            )}
-          </button>
 
           <ColorChip
             color={color}

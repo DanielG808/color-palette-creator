@@ -2,10 +2,16 @@ import { useState, useRef, useEffect } from "react";
 import { TColorChip } from "../types/colorChip";
 import { generateHexCode } from "../utils/generateHexCode";
 import { toast } from "sonner";
+import { TPalette } from "../types/palette";
 
-export default function useColorPaletteCanvas() {
+export default function useColorPaletteCreator() {
   // state
   const [colors, setColors] = useState<TColorChip[]>([]);
+  const [palettes, setPalettes] = useState<TPalette[]>([]);
+
+  useEffect(() => {
+    setPalettes(getPalettes);
+  }, []);
 
   // derived state
   const colorsLength = colors.length;
@@ -33,6 +39,21 @@ export default function useColorPaletteCanvas() {
   }, [colors]);
 
   // helpers
+  function getPalettes() {
+    try {
+      const stored = localStorage.getItem("palettes");
+      if (!stored) return [];
+
+      const parsed = JSON.parse(stored);
+      if (!Array.isArray(parsed)) return [];
+      return parsed;
+    } catch (error) {
+      toast.warning("Failed to retrieve saved palettes.");
+      console.warn("Failed to parse palettes from localStorage:", error);
+      return [];
+    }
+  }
+
   function addColorChip() {
     setColors((prev) => {
       if (prev.length >= 5) return prev;
@@ -82,7 +103,9 @@ export default function useColorPaletteCanvas() {
   function savePalette() {
     try {
       const storedPalettes = localStorage.getItem("palettes");
-      const palettes = storedPalettes ? JSON.parse(storedPalettes) : [];
+      const palettes: TPalette[] = storedPalettes
+        ? JSON.parse(storedPalettes)
+        : [];
 
       const newPalette = {
         id: crypto.randomUUID(),
@@ -91,6 +114,7 @@ export default function useColorPaletteCanvas() {
       palettes.push(newPalette);
 
       localStorage.setItem("palettes", JSON.stringify(palettes));
+      setPalettes(palettes);
       toast.success("New palette saved!");
     } catch (error) {
       console.warn("Failed to add palette to localStorage:", error);
@@ -101,6 +125,7 @@ export default function useColorPaletteCanvas() {
   return {
     colors,
     colorsLength,
+    palettes,
     isNewChip,
     addColorChip,
     removeColorChip,

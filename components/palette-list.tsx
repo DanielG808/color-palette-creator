@@ -10,7 +10,7 @@ export default function PaletteList({ palettes }: PaletteListProps) {
   return (
     <ul className="space-y-1 overflow-y-auto max-h-full pr-4">
       {palettes.map((palette, index) => (
-        <PaletteChip index={index} palette={palette} />
+        <PaletteChip key={palette.id} index={index} palette={palette} />
       ))}
     </ul>
   );
