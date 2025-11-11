@@ -107,9 +107,11 @@ export default function useColorPaletteCreator() {
         ? JSON.parse(storedPalettes)
         : [];
 
+      const lockedColors = colors.map((color) => ({ ...color, locked: true }));
+
       const newPalette = {
         id: crypto.randomUUID(),
-        colors,
+        colors: lockedColors,
       };
       palettes.push(newPalette);
 
