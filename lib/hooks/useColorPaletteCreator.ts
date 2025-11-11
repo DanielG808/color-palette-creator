@@ -124,6 +124,10 @@ export default function useColorPaletteCreator() {
     }
   }
 
+  function deletePalette(id: string) {
+    console.log(`Palette ${id} has been deleted!`);
+  }
+
   return {
     colors,
     colorsLength,
@@ -136,5 +140,6 @@ export default function useColorPaletteCreator() {
     isAllLocked,
     randomizeColors,
     savePalette,
+    deletePalette,
   };
 }
