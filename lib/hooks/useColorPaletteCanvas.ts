@@ -54,7 +54,13 @@ export default function useColorPaletteCanvas() {
     );
   }
 
+  function isAllLocked(): boolean {
+    return colors.every((chip) => chip.locked);
+  }
+
   function randomizeColors() {
+    if (isAllLocked()) return;
+
     setColors((prev) =>
       prev.map((chip) =>
         chip.locked ? chip : { ...chip, hexCode: generateHexCode() }
@@ -69,6 +75,7 @@ export default function useColorPaletteCanvas() {
     addColorChip,
     removeColorChip,
     toggleLock,
+    isAllLocked,
     randomizeColors,
   };
 }

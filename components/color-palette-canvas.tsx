@@ -16,8 +16,11 @@ export default function ColorPaletteCanvas() {
     addColorChip,
     removeColorChip,
     toggleLock,
+    isAllLocked,
     randomizeColors,
   } = useColorPaletteCanvas();
+
+  const allLocked = isAllLocked();
 
   return (
     <section className="flex flex-col justify-center border border-calm-3/75 px-10 py-5 rounded-md">
@@ -30,7 +33,7 @@ export default function ColorPaletteCanvas() {
         removeColorChip={removeColorChip}
         toggleLock={toggleLock}
       />
-      <RandomizeColorsButton onClick={randomizeColors} />
+      <RandomizeColorsButton allLocked={allLocked} onClick={randomizeColors} />
     </section>
   );
 }
