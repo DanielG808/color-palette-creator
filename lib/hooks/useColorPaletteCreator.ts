@@ -46,7 +46,7 @@ export default function useColorPaletteCreator() {
 
       const parsed = JSON.parse(stored);
       if (!Array.isArray(parsed)) return [];
-      return parsed;
+      return parsed.slice().reverse();
     } catch (error) {
       toast.warning("Failed to retrieve saved palettes.");
       console.warn("Failed to parse palettes from localStorage:", error);
@@ -114,7 +114,7 @@ export default function useColorPaletteCreator() {
       palettes.push(newPalette);
 
       localStorage.setItem("palettes", JSON.stringify(palettes));
-      setPalettes(palettes);
+      setPalettes(palettes.slice().reverse());
       toast.success("New palette saved!");
     } catch (error) {
       console.warn("Failed to add palette to localStorage:", error);
