@@ -29,7 +29,7 @@ export default function SavedPalettesContainer() {
   }, []);
 
   return (
-    <aside className="flex-1 flex flex-col border border-calm-3/75 px-8 py-5 rounded-md h-[425px]">
+    <aside className="flex-1 flex flex-col border border-calm-3/75 px-8 py-5 rounded-md h-[450px]">
       <H1 className="text-xl mb-4">Saved palettes:</H1>
       <PaletteList palettes={palettes} />
     </aside>
