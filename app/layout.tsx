@@ -4,6 +4,7 @@ import "./globals.css";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 import { Toaster } from "sonner";
+import ThemeContextProvider from "@/contexts/theme-context-provider";
 
 export const metadata: Metadata = {
   title: "Color Palette Creator",
@@ -21,14 +22,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <body
         className={`${momoTrustDisplay.className} flex flex-col items-center min-h-screen p-10 antialiased`}
       >
-        <Header />
-        {children}
-        <Footer />
-        <Toaster />
+        <ThemeContextProvider>
+          <Header />
+          {children}
+          <Footer />
+          <Toaster />
+        </ThemeContextProvider>
       </body>
     </html>
   );

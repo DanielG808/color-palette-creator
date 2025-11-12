@@ -89,12 +89,12 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #292929;
     --foreground: #e0e0e0;
   }
-}
+} */
 
 .dark {
   --background: #292929;
