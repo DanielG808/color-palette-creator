@@ -34,7 +34,7 @@ export default function ColorPaletteCanvas({
 }: ColorPaletteCanvasProps) {
   const allLocked = isAllLocked();
   return (
-    <section className="flex-1 flex flex-col border border-calm-3/75 h-[410px] px-10 py-5 rounded-md">
+    <section className="flex-1 flex flex-col border border-calm-3/75 dark:border-white/35 h-[410px] px-10 py-5 rounded-md">
       <H1 className="text-xl mb-10">Create your palette:</H1>
       <ColorPalette
         colors={colors}
