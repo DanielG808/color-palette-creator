@@ -14,7 +14,7 @@ export default function PaletteList({
   return (
     <ul className="space-y-1 overflow-y-auto max-h-full">
       {palettes.length === 0 ? (
-        <p className="text- text-calm-3/75">
+        <p className="text-calm-3/75">
           Save a palette and see it displayed here...
         </p>
       ) : (
