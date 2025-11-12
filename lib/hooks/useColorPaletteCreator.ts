@@ -109,6 +109,25 @@ export default function useColorPaletteCreator() {
 
       const lockedColors = colors.map((color) => ({ ...color, locked: true }));
 
+      const newPaletteHexCodes = lockedColors
+        .map((color) => color.hexCode.toLowerCase())
+        .sort();
+
+      const isDuplicate = palettes.some((palette) => {
+        const existingHexCodes = palette.colors
+          .map((color) => color.hexCode.toLowerCase())
+          .sort();
+        return (
+          existingHexCodes.length === newPaletteHexCodes.length &&
+          existingHexCodes.every((hex, i) => hex === newPaletteHexCodes[i])
+        );
+      });
+
+      if (isDuplicate) {
+        toast.warning("This palette already exists.");
+        return;
+      }
+
       const newPalette = {
         id: crypto.randomUUID(),
         colors: lockedColors,
