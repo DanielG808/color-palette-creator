@@ -39,20 +39,6 @@ export default function useColorPaletteCreator() {
   }, [colors]);
 
   // helpers
-  function getPalettes() {
-    try {
-      const stored = localStorage.getItem("palettes");
-      if (!stored) return [];
-
-      const parsed = JSON.parse(stored);
-      if (!Array.isArray(parsed)) return [];
-      return parsed.slice().reverse();
-    } catch (error) {
-      toast.warning("Failed to retrieve saved palettes.");
-      console.warn("Failed to parse palettes from localStorage:", error);
-      return [];
-    }
-  }
 
   function addColorChip() {
     setColors((prev) => {
@@ -100,6 +86,20 @@ export default function useColorPaletteCreator() {
     );
   }
 
+  function getPalettes() {
+    try {
+      const stored = localStorage.getItem("palettes");
+      if (!stored) return [];
+
+      const parsed = JSON.parse(stored);
+      if (!Array.isArray(parsed)) return [];
+      return parsed.slice().reverse();
+    } catch (error) {
+      toast.warning("Failed to retrieve saved palettes.");
+      console.warn("Failed to parse palettes from localStorage:", error);
+      return [];
+    }
+  }
   function savePalette() {
     try {
       const storedPalettes = localStorage.getItem("palettes");
@@ -143,6 +143,22 @@ export default function useColorPaletteCreator() {
     }
   }
 
+  function loadPalette(id: string) {
+    try {
+      const palette = palettes.find((palette) => palette.id === id);
+      if (!palette) {
+        console.warn(`No palette found with id ${id}`);
+        toast.warning("Palette not found.");
+        return;
+      }
+
+      setColors(palette.colors);
+    } catch (error) {
+      console.warn("Failed to load palette:", error);
+      toast.warning("Failed to load palette to the canvas.");
+    }
+  }
+
   function deletePalette(id: string) {
     try {
       const newPalettes = palettes.filter((palette) => palette.id !== id);
@@ -167,6 +183,7 @@ export default function useColorPaletteCreator() {
     isAllLocked,
     randomizeColors,
     savePalette,
+    loadPalette,
     deletePalette,
   };
 }

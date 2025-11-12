@@ -4,11 +4,13 @@ import PaletteChip from "./palette-chip";
 
 type PaletteListProps = {
   palettes: TPalette[];
+  loadPalette: (id: string) => void;
   deletePalette: (id: string) => void;
 };
 
 export default function PaletteList({
   palettes,
+  loadPalette,
   deletePalette,
 }: PaletteListProps) {
   return (
@@ -23,6 +25,7 @@ export default function PaletteList({
             key={palette.id}
             index={index}
             palette={palette}
+            loadPalette={loadPalette}
             deletePalette={deletePalette}
           />
         ))

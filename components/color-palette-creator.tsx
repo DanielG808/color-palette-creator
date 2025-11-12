@@ -18,6 +18,7 @@ export default function ColorPaletteCreator() {
     isAllLocked,
     randomizeColors,
     savePalette,
+    loadPalette,
     deletePalette,
   } = useColorPaletteCreator();
 
@@ -37,6 +38,7 @@ export default function ColorPaletteCreator() {
       />
       <SavedPalettesContainer
         palettes={palettes}
+        loadPalette={loadPalette}
         deletePalette={deletePalette}
       />
     </div>
