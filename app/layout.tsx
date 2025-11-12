@@ -21,7 +21,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body
         className={`${momoTrustDisplay.className} flex flex-col items-center min-h-screen p-10 antialiased`}
       >

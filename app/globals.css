@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
+@custom-variant dark (&:where(.dark, .dark *));
 
 :root {
   /* light gray */ /* dark gray */
@@ -91,14 +91,14 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #333333;
+    --background: #292929;
     --foreground: #e0e0e0;
   }
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
+  --background: #292929;
+  --foreground: #e0e0e0;
   --card: oklch(0.205 0 0);
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.205 0 0);
@@ -136,5 +136,6 @@
   }
   body {
     @apply bg-background text-foreground;
+    transition: background-color 0.3s, color 0.3s;
   }
 }
