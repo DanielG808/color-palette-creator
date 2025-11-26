@@ -3,7 +3,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
-import { Toaster } from "sonner";
+import { ThemeProvider } from "@/contexts/theme-provider";
+import ToasterWithTheme from "@/components/toaster-with-theme";
 
 export const metadata: Metadata = {
   title: "Color Palette Creator",
@@ -21,14 +22,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${momoTrustDisplay.className} flex flex-col items-center min-h-screen p-10 antialiased`}
       >
-        <Header />
-        {children}
-        <Footer />
-        <Toaster />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Header />
+          {children}
+          <Footer />
+          <ToasterWithTheme />
+        </ThemeProvider>
       </body>
     </html>
   );

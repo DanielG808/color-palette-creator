@@ -24,8 +24,8 @@ export default function PaletteChip({
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.12 }}
       className={`${
-        index % 2 === 0 ? "bg-calm-2/65" : ""
-      }  group flex justify-between items-center w-full py-1 px-1 rounded-md hover:bg-calm-3/75 cursor-pointer duration-200`}
+        index % 2 === 0 ? "bg-calm-2/65 dark:bg-white/15" : ""
+      }  group flex justify-between items-center w-full py-1 px-1 rounded-md hover:bg-calm-3/75 dark:hover:bg-white/30 cursor-pointer duration-200`}
     >
       <PaletteColors palette={palette} />
       <DeletePaletteButton

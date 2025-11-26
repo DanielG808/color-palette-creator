@@ -22,7 +22,7 @@ export default function ColorChip({
       {colorsLength > 3 && (
         <button
           onClick={onRemove}
-          className="absolute top-0 -right-6 p-1 text-calm-5/75 hover:text-calm-5 cursor-pointer opacity-0 group-hover:opacity-100 duration-200"
+          className="absolute top-0 -right-6 p-1 text-calm-5/75 dark:text-white/75 hover:text-calm-5 dark:hover:text-white cursor-pointer opacity-0 group-hover:opacity-100 duration-200"
         >
           <XIcon />
         </button>
@@ -30,7 +30,7 @@ export default function ColorChip({
 
       <button
         onClick={() => copyHexCode(color.hexCode)}
-        className="flex justify-center items-center border border-calm-4/75 rounded-full w-24 h-24 shadow-lg hover:shadow-2xl cursor-pointer duration-200"
+        className="flex justify-center items-center border border-calm-4/75 rounded-full w-24 h-24 shadow-lg hover:shadow-2xl dark:shadow-black/50 dark:hover:shadow-black/70 cursor-pointer duration-200"
       >
         <div
           className="rounded-full w-20 h-20"
