@@ -26,7 +26,8 @@ export default function ColorPalette({
   copyHexCode,
 }: ColorPaletteProps) {
   return (
-    <div className="flex space-x-8">
+    // Wrap on small screens, single row on md+; center mobile rows and align-start on desktop
+    <div className="flex flex-wrap justify-center md:justify-start gap-4 md:gap-8">
       {colors.map((color, index) => (
         <motion.div
           key={index}
@@ -50,6 +51,7 @@ export default function ColorPalette({
         </motion.div>
       ))}
 
+      {/* Plus button acts as another chip and will be laid out inline with the colors */}
       {colors.length < 5 && (
         <div className="flex flex-col items-center space-y-5">
           <div className="h-6" />
