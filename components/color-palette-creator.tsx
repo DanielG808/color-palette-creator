@@ -23,7 +23,7 @@ export default function ColorPaletteCreator() {
   } = useColorPaletteCreator();
 
   return (
-    <div className="flex flex-col md:flex-row gap-6">
+    <div className="flex flex-col md:flex-row gap-6 w-full md:w-auto">
       <ColorPaletteCanvas
         colors={colors}
         colorsLength={colorsLength}
