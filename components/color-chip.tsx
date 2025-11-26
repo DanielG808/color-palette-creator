@@ -30,10 +30,10 @@ export default function ColorChip({
 
       <button
         onClick={() => copyHexCode(color.hexCode)}
-        className="flex justify-center items-center border border-calm-4/75 rounded-full w-24 h-24 shadow-lg hover:shadow-2xl dark:shadow-black/50 dark:hover:shadow-black/70 cursor-pointer duration-200"
+        className="flex justify-center items-center border border-calm-4/75 rounded-full w-12 h-12 md:w-24 md:h-24 shadow-lg hover:shadow-2xl dark:shadow-black/50 dark:hover:shadow-black/70 cursor-pointer duration-200"
       >
         <div
-          className="rounded-full w-20 h-20"
+          className="rounded-full w-10 h-10 md:w-20 md:h-20"
           style={{ backgroundColor: color.hexCode }}
         />
       </button>

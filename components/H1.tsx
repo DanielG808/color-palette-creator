@@ -10,7 +10,7 @@ export default function Home({
   return (
     <h1
       className={cn(
-        "text-5xl font-bold text-calm-5 dark:text-calm-2",
+        "text-lg md:text-xl font-bold text-calm-5 dark:text-calm-2",
         className
       )}
     >
