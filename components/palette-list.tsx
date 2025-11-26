@@ -1,5 +1,4 @@
 import { TPalette } from "@/lib/types/palette";
-
 import PaletteChip from "./palette-chip";
 
 type PaletteListProps = {
@@ -14,11 +13,11 @@ export default function PaletteList({
   deletePalette,
 }: PaletteListProps) {
   return (
-    <ul className="space-y-1 overflow-y-auto max-h-full">
+    <ul className="overflow-y-auto h-[310px] space-y-1">
       {palettes.length === 0 ? (
-        <p className="text-calm-3/75">
+        <li className="text-calm-3/75">
           Save a palette and see it displayed here...
-        </p>
+        </li>
       ) : (
         palettes.map((palette, index) => (
           <PaletteChip
