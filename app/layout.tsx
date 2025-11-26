@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${momoTrustDisplay.className} flex flex-col items-center min-h-screen p-10 antialiased`}
+        className={`${momoTrustDisplay.className} flex flex-col items-center min-h-screen p-5 md:p-10 antialiased`}
       >
         <ThemeProvider
           attribute="class"
