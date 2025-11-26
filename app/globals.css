@@ -100,11 +100,11 @@
   --background: #292929;
   --foreground: #e0e0e0;
   --card: #292929;
-  --card-foreground: oklch(0.985 0 0);
-  --popover: #292929;
-  --popover-foreground: #292929;
-  --primary: oklch(11.305% 0.00823 18.36);
-  --primary-foreground: oklch(0.205 0 0);
+  --card-foreground: #292929;
+  --popover: #1f1f1f;
+  --popover-foreground: #e0e0e0;
+  --primary: #292929;
+  --primary-foreground: #292929;
   --secondary: oklch(0.269 0 0);
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.269 0 0);

@@ -8,5 +8,19 @@ export default function ToasterWithTheme() {
   const resolvedTheme: "light" | "dark" =
     theme === "system" ? systemTheme ?? "light" : (theme as "light" | "dark");
 
-  return <Toaster theme={resolvedTheme} />;
+  const isDark = resolvedTheme === "dark";
+
+  return (
+    <Toaster
+      theme={resolvedTheme} // still required for Sonner animation logic
+      style={
+        {
+          "--normal-bg": isDark ? "var(--popover)" : "white",
+          "--normal-text": isDark ? "var(--popover-foreground)" : "black",
+          "--normal-border": "var(--border)",
+          "--border-radius": "var(--radius)",
+        } as React.CSSProperties
+      }
+    />
+  );
 }
