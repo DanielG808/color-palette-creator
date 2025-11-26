@@ -32,7 +32,7 @@ export default function ModeToggle() {
       }}
       aria-label="Toggle theme"
     >
-      {theme === "dark" ? <Moon /> : <Sun />}
+      {theme === "dark" ? <Sun /> : <Moon />}
     </button>
   );
 }
