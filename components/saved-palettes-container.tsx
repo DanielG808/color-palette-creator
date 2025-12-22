@@ -16,13 +16,16 @@ export default function SavedPalettesContainer({
   deletePalette,
 }: SavedPalettesContainerProps) {
   return (
-    <aside className="flex flex-col border border-calm-3/75 dark:border-white/35 px-6 py-4 rounded-md h-[220px] md:h-[410px] w-full md:w-68">
+    <aside className="flex h-full flex-col rounded-md border border-calm-3/75 px-5 py-5 dark:border-white/35">
       <H1 className="mb-4">Saved palettes:</H1>
-      <PaletteList
-        palettes={palettes}
-        loadPalette={loadPalette}
-        deletePalette={deletePalette}
-      />
+
+      <div className="min-h-0 flex-1 overflow-y-auto">
+        <PaletteList
+          palettes={palettes}
+          loadPalette={loadPalette}
+          deletePalette={deletePalette}
+        />
+      </div>
     </aside>
   );
 }

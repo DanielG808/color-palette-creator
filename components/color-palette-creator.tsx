@@ -1,6 +1,5 @@
 "use client";
 
-// components
 import SavedPalettesContainer from "./saved-palettes-container";
 import ColorPaletteCanvas from "./color-palette-canvas";
 import useColorPaletteCreator from "@/lib/hooks/useColorPaletteCreator";
@@ -25,7 +24,14 @@ export default function ColorPaletteCreator() {
   } = useColorPaletteCreator();
 
   return (
-    <div className="flex flex-col md:flex-row gap-6 w-full md:w-auto">
+    <section
+      className="
+        grid grid-cols-1 gap-6
+        md:grid-cols-[1fr_280px]
+        md:h-[410px]            /* ✅ shared height */
+        items-stretch
+      "
+    >
       <ColorPaletteCanvas
         colors={colors}
         colorsLength={colorsLength}
@@ -46,6 +52,6 @@ export default function ColorPaletteCreator() {
         loadPalette={loadPalette}
         deletePalette={deletePalette}
       />
-    </div>
+    </section>
   );
 }

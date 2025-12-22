@@ -1,7 +1,6 @@
 "use client";
 
 import { TColorChip } from "@/lib/types/colorChip";
-
 import H1 from "./H1";
 import ColorPalette from "./color-palette";
 import RandomizeColorsButton from "./randomize-colors-button";
@@ -19,8 +18,6 @@ type ColorPaletteCanvasProps = {
   isAllLocked: () => boolean;
   randomizeColors: () => void;
   savePalette: () => void;
-
-  // ✅ required for export
   exportPalette: (opts?: {
     type?: "png" | "jpeg";
     quality?: number;
@@ -45,13 +42,18 @@ export default function ColorPaletteCanvas({
   const allLocked = isAllLocked();
 
   return (
-    <section className="flex-1 flex flex-col border border-calm-3/75 dark:border-white/35 h-[410px] px-5 md:px-10 py-5 rounded-md">
-      <div className="flex justify-between items-start">
-        <H1 className="mb-5 md:mb-10">Create your palette:</H1>
-        <ExportPaletteButton
-          exportPalette={exportPalette}
-          loading={exporting}
-        />
+    <section className="flex h-full flex-col rounded-md border border-calm-3/75 px-5 py-5 dark:border-white/35 md:px-8">
+      {/* 320px-friendly header: title + lightweight export */}
+      <div className="mb-5 flex items-start justify-between gap-3">
+        <H1 className="whitespace-normal break-words">Create your palette:</H1>
+
+        {/* keep using your existing component, but visually treat it like an icon/utility */}
+        <div className="shrink-0">
+          <ExportPaletteButton
+            exportPalette={exportPalette}
+            loading={exporting}
+          />
+        </div>
       </div>
 
       <ColorPalette
@@ -64,8 +66,13 @@ export default function ColorPaletteCanvas({
         copyHexCode={copyHexCode}
       />
 
-      <RandomizeColorsButton allLocked={allLocked} onClick={randomizeColors} />
-      <SavePaletteButton savePalette={savePalette} />
+      <div className="mt-auto">
+        <RandomizeColorsButton
+          allLocked={allLocked}
+          onClick={randomizeColors}
+        />
+        <SavePaletteButton savePalette={savePalette} />
+      </div>
     </section>
   );
 }

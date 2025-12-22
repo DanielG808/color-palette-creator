@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import Footer from "@/components/footer";
 import Header from "@/components/header";
+import Footer from "@/components/footer";
 import { ThemeProvider } from "@/contexts/theme-provider";
 import ToasterWithTheme from "@/components/toaster-with-theme";
 
@@ -18,23 +18,25 @@ const momoTrustDisplay = localFont({
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="overflow-x-hidden">
       <body
-        className={`${momoTrustDisplay.className} flex flex-col items-center min-h-screen p-5 md:p-10 antialiased`}
+        className={`${momoTrustDisplay.className} min-h-dvh w-full antialiased`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Header />
-          {children}
-          <Footer />
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          {/* PAGE WRAPPER — THIS IS WHERE MARGINS BELONG */}
+          <div className="mx-auto flex min-h-dvh w-full max-w-6xl flex-col px-5 py-6 md:px-10 md:py-10">
+            <Header />
+
+            {/* MAIN CONTENT SPACING */}
+            <main className="my-8 flex-1">{children}</main>
+
+            <Footer />
+          </div>
+
           <ToasterWithTheme />
         </ThemeProvider>
       </body>
