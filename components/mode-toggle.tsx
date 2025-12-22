@@ -31,6 +31,7 @@ export default function ModeToggle() {
         minWidth: "2.5rem",
       }}
       aria-label="Toggle theme"
+      className="cursor-pointer"
     >
       {theme === "dark" ? <Sun /> : <Moon />}
     </button>
