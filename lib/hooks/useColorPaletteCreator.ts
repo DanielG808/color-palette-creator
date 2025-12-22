@@ -276,10 +276,16 @@ export default function useColorPaletteCreator() {
         canvas.toBlob(
           (blob) => {
             if (!blob) return resolve();
+
+            const timestamp = new Date()
+              .toISOString()
+              .replace(/[:.]/g, "-")
+              .slice(0, 19);
+
             const url = URL.createObjectURL(blob);
             const a = document.createElement("a");
             a.href = url;
-            a.download = `palette.${type}`;
+            a.download = `palette-${timestamp}.${type}`;
             document.body.appendChild(a);
             a.click();
             a.remove();
