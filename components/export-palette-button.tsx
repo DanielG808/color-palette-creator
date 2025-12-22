@@ -14,7 +14,12 @@ export default function ExportPaletteButton({
 }: ExportPaletteButtonProps) {
   return (
     <button
-      onClick={() => onExport({ type: "png" })}
+      type="button"
+      onClick={() => {
+        if (!loading) {
+          onExport({ type: "png" });
+        }
+      }}
       disabled={loading}
       className={`
     px-4 py-2 rounded-md text-xs transition
