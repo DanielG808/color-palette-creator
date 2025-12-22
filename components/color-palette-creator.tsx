@@ -20,6 +20,8 @@ export default function ColorPaletteCreator() {
     savePalette,
     loadPalette,
     deletePalette,
+    exportPalette,
+    exporting,
   } = useColorPaletteCreator();
 
   return (
@@ -35,7 +37,10 @@ export default function ColorPaletteCreator() {
         isAllLocked={isAllLocked}
         randomizeColors={randomizeColors}
         savePalette={savePalette}
+        exportPalette={exportPalette}
+        exporting={exporting}
       />
+
       <SavedPalettesContainer
         palettes={palettes}
         loadPalette={loadPalette}
