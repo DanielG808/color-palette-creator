@@ -76,8 +76,10 @@ export default function ColorPaletteCanvas({
 
   return (
     <section className="flex-1 flex flex-col border border-calm-3/75 dark:border-white/35 h-[410px] px-5 md:px-10 py-5 rounded-md">
-      <H1 className="mb-5 md:mb-10">Create your palette:</H1>
-      <ExportPaletteButton onExport={exportPalette} loading={exporting} />
+      <div className="flex justify-between items-start">
+        <H1 className="mb-5 md:mb-10">Create your palette:</H1>
+        <ExportPaletteButton onExport={exportPalette} loading={exporting} />
+      </div>
       <ColorPalette
         colors={colors}
         colorsLength={colorsLength}
