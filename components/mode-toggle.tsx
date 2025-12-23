@@ -31,6 +31,7 @@ export default function ModeToggle() {
         minWidth: "2.5rem",
       }}
       aria-label="Toggle theme"
+      className="cursor-pointer hover:bg-gray-100 dark:hover:bg-white/10 duration-200"
     >
       {theme === "dark" ? <Sun /> : <Moon />}
     </button>

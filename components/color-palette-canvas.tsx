@@ -1,11 +1,12 @@
+// components/color-palette-canvas.tsx
 "use client";
 
 import { TColorChip } from "@/lib/types/colorChip";
-// components
 import H1 from "./H1";
 import ColorPalette from "./color-palette";
 import RandomizeColorsButton from "./randomize-colors-button";
 import SavePaletteButton from "./save-palette-button";
+import ExportPaletteButton from "./export-palette-button";
 
 type ColorPaletteCanvasProps = {
   colors: TColorChip[];
@@ -18,6 +19,11 @@ type ColorPaletteCanvasProps = {
   isAllLocked: () => boolean;
   randomizeColors: () => void;
   savePalette: () => void;
+  exportPalette: (opts?: {
+    type?: "png" | "jpeg";
+    quality?: number;
+  }) => Promise<void> | void;
+  exporting: boolean;
 };
 
 export default function ColorPaletteCanvas({
@@ -31,22 +37,43 @@ export default function ColorPaletteCanvas({
   isAllLocked,
   randomizeColors,
   savePalette,
+  exportPalette,
+  exporting,
 }: ColorPaletteCanvasProps) {
   const allLocked = isAllLocked();
+
   return (
-    <section className="flex-1 flex flex-col border border-calm-3/75 dark:border-white/35 h-[410px] px-5 md:px-10 py-5 rounded-md">
-      <H1 className="mb-5 md:mb-10">Create your palette:</H1>
-      <ColorPalette
-        colors={colors}
-        colorsLength={colorsLength}
-        isNewChip={isNewChip}
-        addColorChip={addColorChip}
-        removeColorChip={removeColorChip}
-        toggleLock={toggleLock}
-        copyHexCode={copyHexCode}
-      />
-      <RandomizeColorsButton allLocked={allLocked} onClick={randomizeColors} />
-      <SavePaletteButton savePalette={savePalette} />
+    <section className="flex h-full w-full lg:min-w-[800px] min-w-0 flex-col rounded-md border border-calm-3/75 px-5 py-5 dark:border-white/35 md:px-8">
+      <div className="mb-5 flex items-start justify-between">
+        <H1 className="whitespace-normal">Create your palette:</H1>
+
+        <ExportPaletteButton
+          exportPalette={exportPalette}
+          loading={exporting}
+        />
+      </div>
+
+      {/* This becomes the “flexing” area instead of creating a giant empty gap */}
+      <div className="flex-1 min-h-0 flex items-center justify-center">
+        <ColorPalette
+          colors={colors}
+          colorsLength={colorsLength}
+          isNewChip={isNewChip}
+          addColorChip={addColorChip}
+          removeColorChip={removeColorChip}
+          toggleLock={toggleLock}
+          copyHexCode={copyHexCode}
+        />
+      </div>
+
+      {/* No mt-auto: that was the thing creating the huge canyon */}
+      <div className="mt-5">
+        <RandomizeColorsButton
+          allLocked={allLocked}
+          onClick={randomizeColors}
+        />
+        <SavePaletteButton savePalette={savePalette} />
+      </div>
     </section>
   );
 }
