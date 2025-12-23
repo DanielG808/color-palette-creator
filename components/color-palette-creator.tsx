@@ -24,34 +24,45 @@ export default function ColorPaletteCreator() {
   } = useColorPaletteCreator();
 
   return (
-    <section
+    <div
       className="
-        grid grid-cols-1 gap-6
-        md:grid-cols-[1fr_280px]
-        md:h-[410px]            /* ✅ shared height */
-        items-stretch
+        w-full
+        flex justify-center
+        px-4 sm:px-6 lg:px-0
+        py-6
+        overflow-x-hidden lg:overflow-visible
       "
     >
-      <ColorPaletteCanvas
-        colors={colors}
-        colorsLength={colorsLength}
-        isNewChip={isNewChip}
-        addColorChip={addColorChip}
-        removeColorChip={removeColorChip}
-        toggleLock={toggleLock}
-        copyHexCode={copyHexCode}
-        isAllLocked={isAllLocked}
-        randomizeColors={randomizeColors}
-        savePalette={savePalette}
-        exportPalette={exportPalette}
-        exporting={exporting}
-      />
+      <section
+        className="
+          w-full
+          max-w-[1240px] xl:max-w-[1360px] 2xl:max-w-[1480px]
+          grid grid-cols-1 gap-6 items-stretch
+          xl:flex
+          xl:h-[430px]
+        "
+      >
+        <ColorPaletteCanvas
+          colors={colors}
+          colorsLength={colorsLength}
+          isNewChip={isNewChip}
+          addColorChip={addColorChip}
+          removeColorChip={removeColorChip}
+          toggleLock={toggleLock}
+          copyHexCode={copyHexCode}
+          isAllLocked={isAllLocked}
+          randomizeColors={randomizeColors}
+          savePalette={savePalette}
+          exportPalette={exportPalette}
+          exporting={exporting}
+        />
 
-      <SavedPalettesContainer
-        palettes={palettes}
-        loadPalette={loadPalette}
-        deletePalette={deletePalette}
-      />
-    </section>
+        <SavedPalettesContainer
+          palettes={palettes}
+          loadPalette={loadPalette}
+          deletePalette={deletePalette}
+        />
+      </section>
+    </div>
   );
 }

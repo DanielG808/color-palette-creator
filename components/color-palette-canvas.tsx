@@ -1,3 +1,4 @@
+// components/color-palette-canvas.tsx
 "use client";
 
 import { TColorChip } from "@/lib/types/colorChip";
@@ -42,31 +43,31 @@ export default function ColorPaletteCanvas({
   const allLocked = isAllLocked();
 
   return (
-    <section className="flex h-full flex-col rounded-md border border-calm-3/75 px-5 py-5 dark:border-white/35 md:px-8">
-      {/* 320px-friendly header: title + lightweight export */}
-      <div className="mb-5 flex items-start justify-between gap-3">
-        <H1 className="whitespace-normal break-words">Create your palette:</H1>
+    <section className="flex h-full w-full lg:min-w-[800px] min-w-0 flex-col rounded-md border border-calm-3/75 px-5 py-5 dark:border-white/35 md:px-8">
+      <div className="mb-5 flex items-start justify-between">
+        <H1 className="whitespace-normal">Create your palette:</H1>
 
-        {/* keep using your existing component, but visually treat it like an icon/utility */}
-        <div className="shrink-0">
-          <ExportPaletteButton
-            exportPalette={exportPalette}
-            loading={exporting}
-          />
-        </div>
+        <ExportPaletteButton
+          exportPalette={exportPalette}
+          loading={exporting}
+        />
       </div>
 
-      <ColorPalette
-        colors={colors}
-        colorsLength={colorsLength}
-        isNewChip={isNewChip}
-        addColorChip={addColorChip}
-        removeColorChip={removeColorChip}
-        toggleLock={toggleLock}
-        copyHexCode={copyHexCode}
-      />
+      {/* This becomes the “flexing” area instead of creating a giant empty gap */}
+      <div className="flex-1 min-h-0 flex items-center justify-center">
+        <ColorPalette
+          colors={colors}
+          colorsLength={colorsLength}
+          isNewChip={isNewChip}
+          addColorChip={addColorChip}
+          removeColorChip={removeColorChip}
+          toggleLock={toggleLock}
+          copyHexCode={copyHexCode}
+        />
+      </div>
 
-      <div className="mt-auto">
+      {/* No mt-auto: that was the thing creating the huge canyon */}
+      <div className="mt-5">
         <RandomizeColorsButton
           allLocked={allLocked}
           onClick={randomizeColors}

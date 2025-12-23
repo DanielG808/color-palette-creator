@@ -27,12 +27,10 @@ export default function RootLayout({
         className={`${momoTrustDisplay.className} min-h-dvh w-full antialiased`}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          {/* PAGE WRAPPER — THIS IS WHERE MARGINS BELONG */}
           <div className="mx-auto flex min-h-dvh w-full max-w-6xl flex-col px-5 py-6 md:px-10 md:py-10">
             <Header />
 
-            {/* MAIN CONTENT SPACING */}
-            <main className="my-8 flex-1">{children}</main>
+            <div className="flex-1 flex min-h-0">{children}</div>
 
             <Footer />
           </div>
