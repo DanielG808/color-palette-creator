@@ -1,5 +1,3 @@
-// components/page-content-container.tsx
-
 export default function PageContentContainer({
   children,
 }: {

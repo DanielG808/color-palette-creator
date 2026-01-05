@@ -1,4 +1,3 @@
-// components/plus-button.tsx
 import { PlusIcon } from "lucide-react";
 
 type PlusButtonProps = {

@@ -12,7 +12,7 @@ export default function ToasterWithTheme() {
 
   return (
     <Toaster
-      theme={resolvedTheme} // still required for Sonner animation logic
+      theme={resolvedTheme}
       style={
         {
           "--normal-bg": isDark ? "var(--popover)" : "white",
