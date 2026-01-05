@@ -1,4 +1,3 @@
-// components/color-palette-canvas.tsx
 "use client";
 
 import { TColorChip } from "@/lib/types/colorChip";
@@ -53,7 +52,6 @@ export default function ColorPaletteCanvas({
         />
       </div>
 
-      {/* This becomes the “flexing” area instead of creating a giant empty gap */}
       <div className="flex-1 min-h-0 flex items-center justify-center">
         <ColorPalette
           colors={colors}
@@ -66,7 +64,6 @@ export default function ColorPaletteCanvas({
         />
       </div>
 
-      {/* No mt-auto: that was the thing creating the huge canyon */}
       <div className="mt-5">
         <RandomizeColorsButton
           allLocked={allLocked}

@@ -1,4 +1,3 @@
-// lib/hooks/useColorPaletteCreator.ts
 import { useState, useRef, useEffect } from "react";
 import { TColorChip } from "../types/colorChip";
 import { generateHexCode } from "../utils/generateHexCode";

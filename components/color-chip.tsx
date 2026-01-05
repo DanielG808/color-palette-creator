@@ -1,4 +1,3 @@
-// components/color-chip.tsx
 "use client";
 
 import { TColorChip } from "@/lib/types/colorChip";
